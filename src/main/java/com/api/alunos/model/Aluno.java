@@ -1,14 +1,21 @@
 package com.api.alunos.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Aluno {
 
 	@Id
@@ -24,45 +31,22 @@ public class Aluno {
 	
 	@NotNull
 	private int matricula;
-	
-	
-	
-	public Aluno() {
-		super();
+
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "curso_id")
+	private Curso curso;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Aluno)) return false;
+		Aluno aluno = (Aluno) o;
+		return getId().equals(aluno.getId());
 	}
-	public Aluno(Long id, String nome, String email, int matricula) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.email = email;
-		this.matricula = matricula;
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(getId());
 	}
-	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public int getMatricula() {
-		return matricula;
-	}
-	public void setMatricula(int matricula) {
-		this.matricula = matricula;
-	}
-	
-	
-	
 }

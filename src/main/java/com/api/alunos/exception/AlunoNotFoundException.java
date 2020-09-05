@@ -1,7 +1,5 @@
 package com.api.alunos.exception;
 
-import javax.persistence.EntityNotFoundException;
-
 public class AlunoNotFoundException extends EntityNotFoundException {
 
 	private static final long serialVersionUID = 1L;
@@ -11,7 +9,7 @@ public class AlunoNotFoundException extends EntityNotFoundException {
 	}
 
 	public AlunoNotFoundException(Long alunoId) {
-		this(String.format("não existe carro com id %d", alunoId));
+		this(String.format("não existe aluno com id %d", alunoId));
 	}
 
 }
