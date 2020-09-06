@@ -2,6 +2,7 @@ package com.api.alunos.service;
 
 import com.api.alunos.assembler.CursoAssembler;
 import com.api.alunos.dto.CursoDTO;
+import com.api.alunos.exception.CursoNotFoundException;
 import com.api.alunos.model.Curso;
 import com.api.alunos.repository.CursoRepository;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,11 @@ public class CursoServiceImpl {
 
     public List<CursoDTO> listar(){
         return cursoAssembler.toCollectionDTO(cursoRepository.findAll());
+    }
+
+    public CursoDTO buscarId(Long id){
+        return cursoAssembler.toDTO(cursoRepository.findById(id).orElseThrow(()
+                -> new CursoNotFoundException(id)));
     }
 
     public CursoDTO salvar(Curso curso){

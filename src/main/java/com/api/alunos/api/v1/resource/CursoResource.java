@@ -34,4 +34,11 @@ public class CursoResource {
     public CursoDTO salvarCurso(@RequestBody Curso curso){
         return cursoServiceImpl.salvar(curso);
     }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Pesquisa um curso pelo id")
+    public CursoDTO bucarId(@PathVariable Long id){
+        return cursoServiceImpl.buscarId(id);
+    }
 }
