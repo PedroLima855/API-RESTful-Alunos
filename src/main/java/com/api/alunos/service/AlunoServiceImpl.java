@@ -53,6 +53,8 @@ public class AlunoServiceImpl {
 		aluno1.setNome(aluno.getNome());
 		aluno1.setEmail(aluno.getEmail());
 		aluno1.setMatricula(aluno.getMatricula());
+		aluno1.setCurso(aluno.getCurso());
+		aluno1.setProfessores(aluno.getProfessores());
 
 		return alunoAssembler.toDTO(alunoRepository.save(aluno1));
 	}

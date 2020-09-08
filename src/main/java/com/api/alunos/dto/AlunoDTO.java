@@ -1,6 +1,7 @@
 package com.api.alunos.dto;
 
 import lombok.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,5 +15,6 @@ public class AlunoDTO {
 	private int matricula;
 
 	private CursoDTO curso;
+	private List<ProfessorDTO> professores;
 
 }
