@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,7 +32,7 @@ public class CursoResource {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Salva um curso")
-    public CursoDTO salvarCurso(@RequestBody Curso curso){
+    public CursoDTO salvarCurso(@Valid @RequestBody Curso curso){
         return cursoServiceImpl.salvar(curso);
     }
 

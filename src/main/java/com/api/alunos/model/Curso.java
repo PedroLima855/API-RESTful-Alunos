@@ -3,6 +3,7 @@ package com.api.alunos.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
@@ -18,9 +19,11 @@ public class Curso {
     private Long id;
 
     @NotNull
+    @NotBlank
     private String nome;
 
     @NotNull
+    @NotBlank
     private Boolean ativo;
 
     @Override

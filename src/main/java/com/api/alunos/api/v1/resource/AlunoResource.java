@@ -1,25 +1,17 @@
 package com.api.alunos.api.v1.resource;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.api.alunos.dto.AlunoDTO;
 import com.api.alunos.model.Aluno;
 import com.api.alunos.service.AlunoServiceImpl;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.ValidationException;
+import java.util.List;
 
 @RestController
 @Api("Alunos API REST")
@@ -55,8 +47,7 @@ public class AlunoResource {
 	@GetMapping("/pesquisa/{email}")
 	@ApiOperation(value = "Faz uma pesquisa atravez do email")
 	public List<AlunoDTO> pesquisarAluno(@PathVariable String email) {
-		return alunoServiceImpl.pesquisar(email);
-
+			return alunoServiceImpl.pesquisar(email);
 	}
 
 	// Salva um registro
@@ -65,7 +56,6 @@ public class AlunoResource {
 	@ApiOperation(value = "Salva um registro")
 	public AlunoDTO salvar(@Valid @RequestBody Aluno aluno) {
 		return alunoServiceImpl.salvar(aluno);
-
 	}
 
 	// edita um registro

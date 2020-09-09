@@ -23,7 +23,9 @@ public class Aluno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+
+	@NotNull
 	@NotBlank
 	private String nome;
 	
@@ -32,14 +34,17 @@ public class Aluno {
 	private String email;
 	
 	@NotNull
+	@NotBlank
 	private int matricula;
 
 	@NotNull
 	@ManyToOne
+	@NotBlank
 	@JoinColumn(name = "curso_id")
 	private Curso curso;
 
 	@ManyToMany
+	@NotBlank
 	@JoinTable(name = "aluno_professor", joinColumns = @JoinColumn(name = "aluno_id"), inverseJoinColumns = @JoinColumn(name = "professor_id"))
 	private List<Professor> professores = new ArrayList<Professor>();
 

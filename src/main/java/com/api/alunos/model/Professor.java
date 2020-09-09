@@ -21,10 +21,15 @@ public class Professor {
     private Long id;
 
     @NotNull
+    @NotBlank
     private String nome;
+
+    @NotNull
+    @NotBlank
     private String materia;
 
     @ManyToMany
+    @NotBlank
     private List<Aluno> alunos = new ArrayList<Aluno>();
 
     @Override

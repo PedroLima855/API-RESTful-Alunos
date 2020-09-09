@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -30,14 +31,14 @@ public class ProfessorResource {
     @PostMapping
     @ApiOperation(value = "Salva um registro")
     @ResponseStatus(HttpStatus.CREATED)
-    public ProfessorDTO salvar(@RequestBody Professor professor){
+    public ProfessorDTO salvar(@Valid @RequestBody Professor professor){
         return professorServicImpl.salvar(professor);
     }
 
     @PutMapping("/{id}")
     @ApiOperation(value = "Edita um registro")
     @ResponseStatus(HttpStatus.OK)
-    public ProfessorDTO editar(@PathVariable Long id, @RequestBody Professor professor){
+    public ProfessorDTO editar(@Valid @PathVariable Long id, @RequestBody Professor professor){
         return professorServicImpl.editar(id, professor);
     }
 }
