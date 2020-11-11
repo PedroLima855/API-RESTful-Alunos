@@ -34,7 +34,7 @@ public class SwaggerConfig {
 
         ApiInfo apiInfo = new ApiInfo(
                 "Alunos API REST",
-                "API REST de cadatro de alunos.",
+                "API REST de cadastro de alunos.",
                 "1.0",
                 "Terms of Service",
                 new Contact("Pedro Lima", "",
